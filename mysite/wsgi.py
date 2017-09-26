@@ -14,3 +14,6 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
 application = get_wsgi_application()
+
+#Para publicar isso deve ser configurado esse arquivo o wsgi protocol é um protocolo do python para django
+#https://tutorial.djangogirls.org/pt/deploy/#configurando-o-arquivo-wsgi
