@@ -1,8 +1,8 @@
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-
+from rest_framework import status, generics
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import *
 from .serializers import *
 import sys
@@ -240,3 +240,5 @@ class FileDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+#Seach Posts by category
+#api/search

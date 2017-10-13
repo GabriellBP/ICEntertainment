@@ -16,6 +16,7 @@ class User(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey('User')
+    category = models.ForeignKey('Category')
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
     image_post = models.ImageField(upload_to='uploads/imagePosts/', blank=True, null=True)
@@ -55,3 +56,9 @@ class File(models.Model):
 
     def __str__(self):
         return self.title
+
+class Category(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.name
