@@ -1,18 +1,20 @@
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status, generics
+from rest_framework import status, generics, viewsets
+from rest_framework import (filters, )
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import *
 from .serializers import *
+from filters.mixins import (FiltersMixin, )
 import sys
 
 
 # List all posts (or a number of posts), or create a new one.
 # api/post/:begin/:end
-class PostList(APIView):
-    #if begin and end were not fill, show all posts
-    def get(self, request, begin=1, end=sys.maxsize):
+class PostList(FiltersMixin, APIView):
+    # if begin and end were not fill, show all posts
+    def get(self, request, begin=0, end=sys.maxsize):
         posts = Post.objects.all().order_by('-id')[int(begin):int(end)]
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
@@ -23,6 +25,19 @@ class PostList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# List posts by category
+# api/search?category='' or api/search?title=''
+class SearchPostList(FiltersMixin, viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('title', )
+    filter_mappings = {
+        'title': 'title',
+        'category': 'category_id'
+    }
 
 
 # Retrieve, update or delete a post instance.
@@ -99,7 +114,7 @@ class ImageList(APIView):
         except Image.DoesNotExist:
             raise Http404
 
-    #get all images about that post
+    # get all images about that post
     def get(self, request, id_post):
         image = self.get_object(id_post)
         serializer = ImageSerializer(image, many=True)
@@ -143,7 +158,7 @@ class CommentList(APIView):
         except Comment.DoesNotExist:
             raise Http404
 
-    #get all comments about that post
+    # get all comments about that post
     def get(self, request, id_post):
         comment = self.get_object(id_post)
         serializer = CommentSerializer(comment, many=True)
@@ -197,7 +212,7 @@ class FileList(APIView):
         except File.DoesNotExist:
             raise Http404
 
-    #get all files about that post
+    # get all files about that post
     def get(self, request, id_post):
         file = self.get_object(id_post)
         serializer = FileSerializer(file, many=True)
@@ -240,5 +255,3 @@ class FileDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-#Seach Posts by category
-#api/search
