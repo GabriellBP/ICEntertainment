@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule} from '@angular/material';
-import { HttpModule } from '@angular/http';
+import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule, MatTabsModule,
+  MatTableModule} from '@angular/material';
 
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { TesteComponent } from './teste/teste.component';
 import { PostComponent } from './post/post.component';
@@ -14,7 +15,8 @@ import { CommentComponent } from './comment/comment.component';
 import { FileComponent } from './file/file.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {RankService} from './ranking-post/shared/ranking-post.service';
-import {PostService} from "./post/shared/post.service";
+import {PostService} from './post/shared/post.service';
+import { CreatePostComponent } from './post/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {PostService} from "./post/shared/post.service";
     GalleryComponent,
     CommentComponent,
     FileComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import {PostService} from "./post/shared/post.service";
     MatButtonModule,
     MatCheckboxModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTabsModule,
+    MatTableModule
   ],
   providers: [RankService, PostService],
   bootstrap: [AppComponent]

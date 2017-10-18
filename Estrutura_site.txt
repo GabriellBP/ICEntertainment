@@ -1,0 +1,31 @@
+*INDEX
+-últimos posts
+
+*SEACH PAGE
+-posts por categoria
+-posts por nome
+-usuarios
+-
+
+*POST PAGE
+-titulo do post
+-descrição do post
+-lista de videos do post
+
+*VIDEO PAGE
+-video
+-próximo video
+-video anterior
+
+*GALERY PAGE
+
+*LOGIN AND REGISTER
+
+*PERFIL PAGE
+-nome
+-apelido
+-posts realizados
+-posição hanking ?
+-
+
+*ADMIN PAGE

@@ -3,7 +3,7 @@ import {Http, Response} from "@angular/http";
 import "rxjs/add/operator/map";
 
 @Injectable()
-export class PostService {
+export class Galleryervice {
   url = 'http://localhost:8000/api/';
 
   constructor(private http: Http) { }
