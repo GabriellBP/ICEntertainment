@@ -11,61 +11,20 @@ import sys
 
 
 # List all posts (or a number of posts), or create a new one.
-# api/post/:begin/:end
-class PostList(FiltersMixin, APIView):
-    # if begin and end were not fill, show all posts
-    def get(self, request, begin=0, end=sys.maxsize):
-        posts = Post.objects.all().order_by('-id')[int(begin):int(end)]
-        serializer = PostSerializer(posts, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        serializer = PostSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# List posts by category
-# api/search?category='' or api/search?title=''
-class SearchPostList(FiltersMixin, viewsets.ModelViewSet):
+# api/post
+# Retrieve, update or delete a post instance.
+# api/post/:pk
+# Search posts by category and title
+# api/post?category='' or api/search?title=
+class PostList (FiltersMixin, viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('title', )
+    search_fields = ('title',)
     filter_mappings = {
         'title': 'title',
         'category': 'category_id'
     }
-
-
-# Retrieve, update or delete a post instance.
-# api/post/:pk
-class PostDetail(APIView):
-    def get_object(self, pk):
-        try:
-            return Post.objects.get(pk=pk)
-        except Post.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk):
-        post = self.get_object(pk)
-        serializer = PostSerializer(post)
-        return Response(serializer.data)
-
-    def put(self, request, pk):
-        post = self.get_object(pk)
-        serializer = PostSerializer(post, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk):
-        post = self.get_object(pk)
-        post.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 # List post with publish_date null
