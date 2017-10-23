@@ -1,10 +1,46 @@
-<p>
-  post works!
-</p>
-<ul>
-  <li *ngFor="let post of posts">
-    <span class="title">{{ post.title }}</span><br />
-    <span class="description">{{ post.description }}</span>
+<mat-card *ngFor="let post of posts" style="width:500px;margin:20px;">
+  <mat-card-title-group>
+    <mat-card-title>{{ post.title }}</mat-card-title>
+    <mat-card-subtitle>{{ post.created_date }}</mat-card-subtitle>
+    <img mat-card-lg-image src="{{ post.image_post }}">
+  </mat-card-title-group>
+</mat-card>
+<!--TESTES-->
+<!--<p>-->
+  <!--post works!-->
+<!--</p>-->
+<!--<ul>-->
+  <!--<li *ngFor="let post of posts">-->
+    <!--<span class="title">{{ post.title }}</span><br />-->
+    <!--<span class="description">{{ post.description }}</span>-->
 
-  </li>
-</ul>
+  <!--</li>-->
+<!--</ul>-->
+<!--<mat-card>-->
+  <!--<mat-card-header>-->
+    <!--<mat-card-title>Card</mat-card-title>-->
+    <!--<mat-card-subtitle>as</mat-card-subtitle>-->
+    <!--<img mat-card-avatar src="https://i2.wp.com/www.colunatech.com.br/wp-content/uploads/2017/01/melhores-animes-de-todos-os-tempos.jpg?fit=800%2C500&ssl=1">-->
+  <!--</mat-card-header>-->
+  <!--<mat-card-content>Simple card</mat-card-content>-->
+  <!--&lt;!&ndash;<img mat-card-image>&ndash;&gt;-->
+  <!--<mat-card-footer></mat-card-footer>-->
+<!--</mat-card>-->
+<!--<mat-card>-->
+  <!--<mat-card-title>Card</mat-card-title>-->
+  <!--<mat-card-subtitle>as</mat-card-subtitle>-->
+  <!--<img mat-card-avatar src="https://i2.wp.com/www.colunatech.com.br/wp-content/uploads/2017/01/melhores-animes-de-todos-os-tempos.jpg?fit=800%2C500&ssl=1" style="width:200px;height:200px;">-->
+  <!--<mat-card-content>Simple card</mat-card-content>-->
+  <!--<mat-card-footer></mat-card-footer>-->
+<!--</mat-card>-->
+<!--<mat-card>-->
+  <!--<mat-card-title-group>-->
+    <!--<mat-card-title>Card</mat-card-title>-->
+    <!--<mat-card-subtitle>as</mat-card-subtitle>-->
+    <!--<img mat-card-sm-image src="https://i2.wp.com/www.colunatech.com.br/wp-content/uploads/2017/01/melhores-animes-de-todos-os-tempos.jpg?fit=800%2C500&ssl=1">-->
+    <!--<img mat-card-mat-image src="https://i2.wp.com/www.colunatech.com.br/wp-content/uploads/2017/01/melhores-animes-de-todos-os-tempos.jpg?fit=800%2C500&ssl=1">-->
+    <!--<img mat-card-lg-image src="https://i2.wp.com/www.colunatech.com.br/wp-content/uploads/2017/01/melhores-animes-de-todos-os-tempos.jpg?fit=800%2C500&ssl=1">-->
+  <!--</mat-card-title-group>-->
+  <!--<mat-card-content>Simple card</mat-card-content>-->
+  <!--<mat-card-footer></mat-card-footer>-->
+<!--</mat-card>-->

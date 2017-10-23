@@ -2,8 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule, MatTabsModule,
-  MatTableModule} from '@angular/material';
+  MatTableModule, MatCardModule, MatInputModule, MatIconModule, MatFormFieldModule,
+  MatSelectModule, MatSnackBarModule, MatProgressBarModule} from '@angular/material';
+import { Angular2TokenService } from 'angular2-token';
+import { ImageUploadModule } from 'angular2-image-upload';
 
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { TesteComponent } from './teste/teste.component';
@@ -14,9 +18,13 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { CommentComponent } from './comment/comment.component';
 import { FileComponent } from './file/file.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {RankService} from './ranking-post/shared/ranking-post.service';
-import {PostService} from './post/shared/post.service';
+import { RankService } from './ranking-post/shared/ranking-post.service';
+import { PostService } from './post/shared/post.service';
 import { CreatePostComponent } from './post/create-post/create-post.component';
+import { SearchPostComponent } from './post/search-post/search-post.component';
+import { RouterModule } from '@angular/router';
+import {TesteService} from "./teste/teste.service";
+
 
 @NgModule({
   declarations: [
@@ -29,9 +37,11 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
     CommentComponent,
     FileComponent,
     NavbarComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    SearchPostComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
@@ -40,9 +50,27 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
     MatMenuModule,
     MatToolbarModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+    ImageUploadModule.forRoot(),
+    RouterModule.forRoot([
+      {path: '', component: PostComponent},
+      {path: 'search', component: SearchPostComponent},
+      {path: 'create-post', component: CreatePostComponent},
+      {path: 'create-file', component: FileComponent},
+      {path: 'gallery', component: GalleryComponent},
+      {path: 'comments', component: CommentComponent},
+      {path: 'approve-post', component: AprovePostComponent},
+      {path: 'testes', component: TesteComponent},
+    ])
   ],
-  providers: [RankService, PostService],
+  providers: [RankService, PostService, TesteService, Angular2TokenService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

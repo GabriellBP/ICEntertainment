@@ -1,37 +1,28 @@
-<p>
-  ranking-post works!
-</p>
+<div id="ranking">
+  <mat-tab-group>
+    <mat-tab label="Posts">
+      <div class="table-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
 
-<mat-tab-group>
-  <mat-tab label="Posts">
-    <!--<ul>-->
-      <!--<li *ngFor="let post of posts">-->
-        <!--<span class="title">{{ post.title }}</span>-->
-      <!--</li>-->
-    <!--</ul>-->
-    <div class="table-container mat-elevation-z8">
-      <mat-table #table [dataSource]="dataSource">
+          <!-- Position Column -->
+          <ng-container matColumnDef="position" style="width:50px">
+            <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+          </ng-container>
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef> Position </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-        </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+          </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="title">
-          <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-    </div>
-  </mat-tab>
-  <mat-tab label="Usuários">
-    Content 2
-  </mat-tab>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Usuários">
+      Users
+    </mat-tab>
 </mat-tab-group>
-
-
+</div>

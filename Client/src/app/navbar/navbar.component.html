@@ -1,8 +1,10 @@
 <mat-toolbar color="primary">
+  <button mat-mini-fab color="primary" (click)="home_buttom()"><mat-icon>home</mat-icon></button>
+  <button mat-menu-item (click)="search_buttom()">Search</button>
   <button mat-button [matMenuTriggerFor]="user">User</button>
   <mat-menu #user="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
+    <button mat-menu-item (click)="create_post_buttom()">Criar Post</button>
+    <button mat-menu-item>Perfil</button>
   </mat-menu>
 </mat-toolbar>
 

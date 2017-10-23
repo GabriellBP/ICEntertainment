@@ -3,4 +3,26 @@
 body{
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  min-width: 1000px;
+  overflow-x: scroll;
+}
+
+#content {
+  overflow: auto;
+  display: inline-block;
+  min-width: 600px;
+}
+
+#ranking {
+  width: 350px;
+  float: right;
+  display: inline-block;
+}
+
+#content mat-card {
+  left: 0;
+  right: 0;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
