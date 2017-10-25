@@ -4,6 +4,17 @@
     <mat-card-subtitle>{{ post.created_date }}</mat-card-subtitle>
     <img mat-card-lg-image src="{{ post.image_post }}">
   </mat-card-title-group>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Descrição:
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    {{ post.description }}
+  </mat-expansion-panel>
+  <mat-card-actions>
+    <button mat-button (click)="goTo(post.id)"><mat-icon>trending_flat</mat-icon></button>
+  </mat-card-actions>
 </mat-card>
 <!--TESTES-->
 <!--<p>-->

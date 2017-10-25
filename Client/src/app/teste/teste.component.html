@@ -1,4 +1,32 @@
-<div>
-  <iframe src="https://drive.google.com/file/d/0B3vzj0q2W4rPSnpkU3BiTjB5RXc/preview" width="640" height="480"></iframe>
+<!--<div>-->
+<!--  <iframe src="https://drive.google.com/file/d/0B3vzj0q2W4rPSnpkU3BiTjB5RXc/preview" width="640" <!--height="480"></iframe>-->
+<!--</div>-->
+<!--<image-upload (uploadFinished)="submit($event)"  > </image-upload>-->
+<!--<div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">-->
+  <!--<h1>Drag &amp; Drop</h1>-->
+<!--</div>-->
+
+<!--<label class="upload-button">-->
+  <!--<input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>-->
+  <!--or choose file(s)-->
+<!--</label>-->
+
+<!--<button type="button" class="start-upload-btn" (click)="startUpload()">-->
+  <!--Start Upload-->
+<!--</button>-->
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Título" [(ngModel)]="title" name="titles" required>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <textarea matInput placeholder="Descrição" [(ngModel)]="description" name="description"></textarea>
+  </mat-form-field>
+  <br />
+  <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept="image/*">
+  <br />
+  <button (click)="submit(this.formData, this.options)" mat-mini-fab matSuffix class="button" color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
-<image-upload (uploadFinished)="submit($event)"  > </image-upload>
+

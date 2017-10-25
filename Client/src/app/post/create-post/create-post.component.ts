@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {PostService} from '../shared/post.service';
-import {FileSelectDirective, FileDropDirective, FileUploader} from 'ng2-file-upload';
+/*import {FileSelectDirective, FileDropDirective, FileUploader} from 'ng2-file-upload';*/
 import {Category} from '../../models/category.model';
 import {MatSnackBar} from '@angular/material';
 import {Router} from '@angular/router';
-import {Angular2TokenService} from 'angular2-token';
+/*import {Angular2TokenService} from 'angular2-token';*/
 
 
 @Component({
@@ -23,11 +23,11 @@ export class CreatePostComponent {
   formData = null;
 
   constructor(private postService: PostService, private snackBar: MatSnackBar,
-              private router: Router, private tokenService: Angular2TokenService) {
+              private router: Router, /*private tokenService: Angular2TokenService*/) {
     postService.getCategories().subscribe((data: Category[]) => {
       this.categories = data;
     });
-    this.tokenService.init();
+    /*this.tokenService.init();*/
   }
 
   submit() {
@@ -38,6 +38,7 @@ export class CreatePostComponent {
       'title': this.title, 'description': this.description,
       'category': this.category, 'author': 1, 'image_post': this.image
     }).subscribe(() => this.router.navigate(['']));
+
     // const fileBrowser = this.fileInput.nativeElement;
     // if (fileBrowser.files && fileBrowser.files[0]) {
     //   this.formData = new FormData();
@@ -46,7 +47,7 @@ export class CreatePostComponent {
     // this.postService.createPost({
     //   'title': this.title, 'description': this.description,
     //   'category': this.category, 'author': 1, 'image_post': this.formData
-    // }, this.tokenService).subscribe(() => this.router.navigate(([''])));
+    // }).subscribe(() => this.router.navigate(([''])));
   }
 }
 

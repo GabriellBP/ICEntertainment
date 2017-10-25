@@ -41,13 +41,23 @@ export class PostService {
       .map((res: Response) => res.json());
   }
 
+  getPost(pk: number) {
+    return this.http.get(this.url + 'post/' + pk)
+      .map((res: Response) => res.json());
+  }
+
   searchPosts(search: string) {
     return this.http.get(this.url + 'post?search=' + search)
       .map((res: Response) => res.json());
   }
 
-  getPost(pk: number) {
-    return this.http.get(this.url + 'post/' + pk)
+  getAuthor(pk: number) {
+    return this.http.get(this.url + 'user/' + pk)
+      .map((res: Response) => res.json());
+  }
+
+  getFiles(idPost: number) {
+    return this.http.get(this.url + 'post/' + idPost + '/file')
       .map((res: Response) => res.json());
   }
 
